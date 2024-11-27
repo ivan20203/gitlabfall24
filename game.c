@@ -58,8 +58,8 @@ int main(int argc, char *argv[])
 			}
 			case 4:
 			{
-				puts("room4");
-				break;
+//adonay				
+				puts("room4");				break;
 			}
 			case 5:
 			{
