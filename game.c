@@ -40,6 +40,8 @@ int main(int argc, char *argv[])
 			case 1:
 			{
 				puts("room1");
+//nathan 
+
 				break;
 			}
 			case 2:
