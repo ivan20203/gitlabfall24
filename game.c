@@ -112,6 +112,7 @@ int main(int argc, char *argv[])
 			case 12:
 			{
 				puts("room12");
+//DanielR.
 				break;
 			}
 			case 13:
@@ -136,6 +137,7 @@ int main(int argc, char *argv[])
 			}
 			case 17:
 			{
+//Alexis Gutierrez
 				puts("room17");
 				break;
 			}
