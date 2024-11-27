@@ -88,6 +88,7 @@ int main(int argc, char *argv[])
 
 			case 8:
 			{
+			//yyong 
 				puts("room8");
 				break;
 			}
@@ -101,6 +102,7 @@ int main(int argc, char *argv[])
 				puts("room10");
 				break;
 			}
+			
 			case 11:
 			{
 				puts("room11");
