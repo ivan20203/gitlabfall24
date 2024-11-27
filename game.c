@@ -67,11 +67,20 @@ int main(int argc, char *argv[])
 				puts("room6");
 				break;
 			}
+
+
 			case 7:
+
 			{
+
+// Alexis Jennar Gonzaga`s Boss Room
+
 				puts("room7");
 				break;
+
 			}
+
+
 			case 8:
 			{
 				puts("room8");
