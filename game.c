@@ -188,6 +188,7 @@ int main(int argc, char *argv[])
 			case 30:
 			{
 				puts("room30");
+//ivan
 				break;
 			}
 			case 31:
