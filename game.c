@@ -108,6 +108,8 @@ int main(int argc, char *argv[])
 			case 14:
 			{
 				puts("room14");
+// Omar Flores
+				printf("This is Omar's Room");
 				break;
 			}
 			case 15:
