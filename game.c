@@ -15,7 +15,12 @@
 
 //place function prototypes here
 
+
 int rps_game(char handGuess, char cpuGuess);
+
+void room3(void);
+
+
 
 int main(int argc, char *argv[])
 {
@@ -171,66 +176,90 @@ int main(int argc, char *argv[])
 			case 2:
 			{
 				puts("room2");
+//raquel
 				break;
 			}
 			case 3:
 			{
 				puts("room3");
+				//Nestor Hernandez
+				room3();
 				break;
 			}
 			case 4:
 			{
-				puts("room4");
-				break;
+//adonay				
+				puts("room4");				break;
 			}
 			case 5:
 			{
 				puts("room5");
+				//Sathwika
 				break;
 			}
 			case 6:
 			{
+				//anushka
 				puts("room6");
 				break;
 			}
+
+
 			case 7:
+
 			{
+
+// Alexis Jennar Gonzaga`s Boss Room
+
 				puts("room7");
 				break;
+
 			}
+
+
 			case 8:
 			{
+			//yyong 
 				puts("room8");
 				break;
 			}
+//
 			case 9:
 			{
+//Serina			
 				puts("room9");
 				break;
 			}
 			case 10:
 			{
+//Angel
 				puts("room10");
 				break;
 			}
+			
 			case 11:
 			{
 				puts("room11");
+//Cecilia
 				break;
 			}
 			case 12:
 			{
 				puts("room12");
+//DanielR.
 				break;
 			}
 			case 13:
 			{
 				puts("room13");
+//sidney
 				break;
 			}
 			case 14:
 			{
 				puts("room14");
+// Omar Flores
+				printf("This is Omar's Room");
 				break;
 			}
 			case 15:
@@ -245,6 +274,7 @@ int main(int argc, char *argv[])
 			}
 			case 17:
 			{
+//Alexis Gutierrez
 				puts("room17");
 				break;
 			}
@@ -259,6 +289,7 @@ int main(int argc, char *argv[])
 				break;
 			}
 			case 20:
+//Esteban Nino
 			{
 				puts("room20");
 				break;
@@ -273,6 +304,7 @@ int main(int argc, char *argv[])
 				puts("room22");
 				break;
 			}
+//Corvalis Room - 23
 			case 23:
 			{
 				puts("room23");
@@ -311,6 +343,7 @@ int main(int argc, char *argv[])
 			case 30:
 			{
 				puts("room30");
+//ivan
 				break;
 			}
 			case 31:
@@ -450,6 +483,7 @@ int main(int argc, char *argv[])
 
 //place functions here
 
+
 int rps_game(char handGuess, char cpuGuess)
 {
 
@@ -475,3 +509,138 @@ int rps_game(char handGuess, char cpuGuess)
 }
 
 
+//===============================================================================================
+//Nestor's Function
+void room3(void)
+{
+    int roomChoice3 = 0;
+    int roomResults3[5] = {0};
+    printf("You have entered Room 3. What would you like to do?\n");
+    printf("1. Gambler's hall\n");
+    printf("2. Nightmare slope\n");
+    printf("3. Tavern\n");
+    printf("4. Three little pigs\n");
+    printf("5. ???\n");
+    printf("Choose an option (1-5): ");
+    scanf("%d", &roomChoice3);
+
+    switch(roomChoice3)
+    {
+        case 1:
+        {
+            //gambler
+            puts("The Old Gambler appears! He challenges you to a good ol' coinflip, all in. Heads or tails?");
+            srand(time(NULL));
+            int coin = rand() % 2;
+            char userInput3;
+            int pWins = 0, gWins = 0; //pWins = player, gWins = gambler
+            int rounds = 0;
+            bool firstTimeWin = false;
+
+            printf("Choose heads or tails (h/t): ");
+            scanf(" %c", &userInput3);
+
+            if ((userInput3 == 'h' && coin == 0) || (userInput3 == 't' && coin == 1)) 
+            {
+                printf("You won!\n");
+                firstTimeWin = true;
+            } 
+            else
+            {
+                printf("You lost.\n");
+            }
+
+            if (firstTimeWin)
+            {
+                printf("The Old Gambler is a sore loser. Best of 3!\n");
+
+                while (rounds < 3 && pWins < 2 && gWins < 2)
+                {
+                    int nCoin = rand() % 2;
+                    printf("Choose heads or tails (h/t): ");
+                    scanf(" %c", &userInput3);
+
+                if ((userInput3 == 'h' && nCoin == 0) || (userInput3 == 't' && nCoin == 1)) 
+                {
+                    printf("You won this round! That's 2 out of 3.\n");
+                    pWins+=2;
+                }
+                else
+                {
+                    printf("You lost this round!\n");
+                    gWins++;
+                }
+                rounds++;
+            }
+
+            if (pWins > gWins)
+            {
+                printf("You won!\n");
+            }
+            else
+            {
+                printf("The Old Gambler won.\n");
+            }
+            
+            }
+
+            printf("You have successfully completed room 3!\n");
+            break;
+        }
+        case 2:
+        {
+            //nightmare
+            puts("Are you ready to face your nightmare? Here comes a pack of.....bunnies?");
+            puts("*checks notes*");
+            puts("Looks like the programming messed up and put you into the comfort room instead, how lucky!");
+            printf("You have successfully completed room 3!\n");
+            break;
+        }
+        case 3:
+        {
+            //tavern
+            puts("You walk into a tavern and see a drunken man turn and look at you.");
+            puts("He challenges you to arm wrestling but is clearly too drunk to walk straight.");
+            char win3;
+            printf("Accept his challenge? (y/n): ");
+            scanf(" %c", &win3); 
+            printf("You win regardless of your choice, he was about to pass out anyway.\n");
+            roomResults3[2] = 1;  //1 = win
+            printf("You have successfully completed room 3!\n");
+            break;
+        }
+        case 4:
+        {
+            //pigs
+            char uInput3;
+            printf("You come across three small pigs, will you play with them? (y/n): ");
+            scanf(" %c", &uInput3); 
+
+            if (uInput3 == 'y') {
+                printf("I mean why not, why shouldn't you play with the piggies? You have time to spare anyway.\n");
+            } else if (uInput3 == 'n') {
+                printf("The piggies stare at you while you pass by then go back to doing pig things and making pig noises. Oink!\n");
+            } else {
+                printf("Invalid input. Please respond with 'y' or 'n'.\n");
+            }
+            printf("You have successfully completed room 3!\n");
+            break;
+        }
+        case 5:
+        {
+            //???
+            for (int i = 0; i < 5; i++) {
+                printf("Why did you even pick this one?\n");
+            }
+            printf(".....\n");
+            printf("Whoops\n");
+            printf("You have successfully completed room 3!\n");
+            break;
+        }
+        default:
+            printf("Invalid choice. Please choose between 1 and 5.\n");
+    }
+}
+
+
+//===============================================================================================
