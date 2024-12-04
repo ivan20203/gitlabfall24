@@ -17,7 +17,7 @@
 
 
 void room11Challenge(void);
-
+void roomTwoRS(int reply);
 int RM12DiceRoll();
 
 
@@ -182,8 +182,40 @@ int main(int argc, char *argv[])
 			}	
 			case 2:
 			{
-				puts("room2");
-//raquel
+				//Raquel Serratos
+				printf("\n\tYou open door number two and step into a dark room. The door clicks shut behind you, locking you in. \n\tThe only light source is coming from a single lit candle on a table in the center of the room. \n\tSitting there, bathed in the glow, is a goblin with a menacing grin. \n\t\"Your only way out of this room is by winning my challenge,\" it rasps.");
+
+				for(int i = 0; i < 3; i++)
+				{
+					int reply = 0;
+					printf("\n\n\t\"Choose one of the following games.\" demands the goblin.\n\t1. Coin Toss\n\t2. Math Problem\n\t3. Guess a Number\n");
+
+					do{
+						printf("Enter a valid choice: ");
+						scanf("%d", &reply);
+					}
+					while(reply != 1 && reply != 2 && reply != 3);
+
+					roomTwoRS(reply);
+
+					getchar();
+					printf("\n\nPress any key to continue...\n");
+					getchar();
+
+					if(i != 2)
+					{
+						printf("\n\n\t\"I lied! I want to play another game and if you don't agree I will curse you,\" the goblin threathened menacingly.");
+					}
+				}
+
+				roomTwoRS(4);
+
+				getchar();
+				printf("\n\nPress any key to continue...\n");
+				getchar();
+
+				printf("\n\tThe goblin, growing increasingly bored with your attempts, narrows his eyes and stands up abruptly.\n\t\"Enough!\" he snarled, \"I tire of games with you.\"\n\tWith a swift motion, he kicks you out of the room, and the door slams shut behindn you.\n\n");
+
 				break;
 			}
 			case 3:
@@ -1003,6 +1035,94 @@ void room3(void)
         default:
             printf("Invalid choice. Please choose between 1 and 5.\n");
     }
+}
+
+void roomTwoRS(int reply)
+{
+	//switch statement
+	switch(reply)
+	{
+		case 1:
+			srand(time(NULL));
+			int answers[5];
+			int wins = 0;
+			int losses = 0;
+
+			for(int i = 0; i < 3; i++)
+			{
+				answers[i] = (rand() % 2);
+			}
+
+			printf("\n\t\"I challenge you to a coin toss, \"the goblin laughed. \"\tYou must guess correctly at least 2 out of 3 coin tosses to win your freedom.\"");
+
+		        for(int i = 0; i < 3; i++)
+        		{
+                		do{
+                        		printf("\n\tEnter 0 for heads or 1 for tails (ROUND %d): ", i+1);
+		                        scanf("%d", &reply);
+				} while(reply != 1 && reply != 0);
+
+		                if(answers[i] == reply)
+                		{
+                        		printf("\tCorrect");
+		                        wins += 1;
+                		}
+                		else
+		                {
+                	        	printf("\tWrong");
+	                        	losses += 1;
+        		        }
+		                printf("\t\t***TOTAL WINS: %d\t***TOTAL LOSSES: %d\t", wins, losses);
+        		}
+
+		        if(wins >= 2)
+		        {
+                		printf("\n\n\tYou Won!");
+				break;
+        		}
+        		printf("\n\n\tYou lost.");
+			break;
+
+		case 2:
+			int x = 1 + (rand() % 40);
+			int y = 1 + (rand() % 30);
+
+			printf("\n\tThe goblin cackles and taunts, \"Let's see if you can solve this equation correctly!\"\n\t%d + ((%d - %d) * %d) = ?\nEnter your answer: ", 10 * x, 2 * y, 3 * x, y);
+			x = (10 * x) - (((2 * y) - (3 * x)) * y);
+			scanf("%d", &reply);
+
+			if(x == reply)
+			{
+				printf("\n\t\"Inconceivable, You Are Correct!\" said the goblin unhappily.");
+				break;
+			}
+			printf("\n\t\"Wrong. The answer is %d,\" sneered the goblin.", x);
+			break;
+		case 3:
+			int rando = 10 + (rand() % 101);
+			printf("\n\t\"The goblin's eyes gleamed with mischief. \"Guess a number between 1 and %d\", the goblin challenged, its wicked grin widening.\nEnter your guess: ", rando);
+	        	scanf("%d", &reply);
+
+			rando = 1 + (rand() % rando);
+
+			if(reply == rando)
+       			{
+	        	        printf("\n\t\"Impossible! You guessed correctly!\" screamed the goblin.");
+				break;
+        		}
+	        	printf("\n\t\"Wrong! The answer was %d\", mocked the goblin", rando);
+			break;
+		case 4:
+			printf("\n\n\tThe goblin decides to try a trickier challenge. He offers the following riddle.\n\tA plane with 21 first class passengers and 55 economy class passengers flying to Canada crashed on the border between Canada and the United States.\n\tHow many survivors should be buried in Canada?\n\n\tEnter a digit only: ");
+			scanf("%d", &reply);
+			if(reply == 0)
+			{
+				printf("\n\t\"Fine you win again,\" growled the goblin.\n");
+				break;
+			}
+			printf("\n\t\"Wrong. You cannot bury survivors.\"sighed the goblin unimpressed.\n");
+			break;
+	}
 }
 
 
