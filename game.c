@@ -770,15 +770,13 @@ void room23Logic(){
 		"Lava planet"
 		"No where"
 		};
-		puts("You open the browser as it prompts you to type in a destiation as a number. The page is labeled with the following");
+		puts("\n\nYou open the browser as it prompts you to type in a destiation as a number. The page is labeled with the following");
 		puts("TYPE IN AN ID TO YOUR NEW SPACE VACATION DESTINATION!");
 		puts("Enter a number between 1-5");
 		scanf("%d",&vacationID);
 
 		char *vacation;
-		printf("%d vs %d", vacationID, locCount);
 		if(vacationID >= locCount){
-			puts("Out of bounds");
 			vacation = "A random place";
 			//printf("\nYou selected your vacation spot to %s! Enjoy your stay!\n\n",vacation);
 		}
