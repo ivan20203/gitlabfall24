@@ -15,7 +15,11 @@
 
 //place function prototypes here
 
+
+void room11Challenge(void);
+
 int RM12DiceRoll();
+
 
 
 int rps_game(char handGuess, char cpuGuess);
@@ -241,7 +245,7 @@ int main(int argc, char *argv[])
 			
 			case 11:
 			{
-				puts("room11");
+			 room11Challenge(); //this will call out room 11 to play the game in this room 
 //Cecilia
 				break;
 			}
@@ -632,6 +636,99 @@ int main(int argc, char *argv[])
 
 //place functions here
 
+//room 11 function
+
+void room11Challenge(void) {
+    int choice;
+    int randomCode1=(rand()%10)+1;
+    int randomCode2=(rand()%10)+1;
+    int guess1, guess2;
+    char *hints[3]={
+        "The codes are both single-digit numbers.",
+        "Each code is between 1 and 10.",
+        "The numbers can be odd or even. Who knows?"
+    };
+
+    puts("You are in room 11, and you must complete the task to survive. The water is rising, and you need to find a way to escape.");
+    puts("In front of you is a big red door with a treasure chest that glitters with gold! To win the gold and escape, you must guess the correct codes to open the chest.");
+    puts("BUT there's a catch once you select option 1 the timer will start counting down! you have 60 seconds, IF YOU DO NOT GUESS IN 60 SECONDS YOU WILL LOOSE ALL YOUR ATTEMPS! GOODLUCK :^)");
+    puts("If you fail, the water will rise, and you will drown! The chest contains great wealth, but only if you can solve the challenge.");
+
+    while(1){
+        puts("\nWhat will you do?");
+        puts("1. Attempt to guess the codes to open the treasure chest.");
+        puts("2. Search the room for clues to open the chest.");
+        puts("3. Talk to the spirit guarding the room for clues.");
+        puts("4. Try to escape through the door with the treasure.");
+        puts("5. Try to open the chest with a knife.");
+
+        printf("Enter your choice (1-5): ");
+        scanf("%d", &choice);
+        if (choice==99){
+            puts("You have chosen to leave the room. Goodbye!");
+            return;
+        }
+
+        switch(choice){
+            case 1:{
+                puts("\nA spirit comes to you and says: 'To open the chest, guess the correct codes.'");
+                puts("You have 4 attempts to guess both codes correctly. Here are some hints:");
+                for(int i=0; i<3; i++){
+                    printf("Hint %d: %s\n", i + 1, hints[i]);
+                }
+
+                time_t startTime,currentTime;
+                time(&startTime);
+                int attempts=4;
+
+                while(attempts > 0){
+                    time(&currentTime);
+                    double elapsedTime=difftime(currentTime, startTime);
+                    if(elapsedTime>=60.0) {
+                        puts("\nTime's up! The chest has been locked permanently, and the water rises. You failed to escape!");
+                        return;
+                    }
+
+                    printf("\nEnter your first guess: ");
+                    scanf("%d", &guess1);
+
+                    time(&currentTime);
+                    elapsedTime = difftime(currentTime, startTime);
+                    if(elapsedTime >= 60.0){
+                        puts("\nTime's up! The chest has been locked permanently, and the water rises. You failed to escape!");
+                        return;
+                    }
+
+                    printf("Enter your second guess: ");
+                    scanf("%d", &guess2);
+                    if (guess1==randomCode1 && guess2 == randomCode2) {
+                        puts("\nThe chest opens, and you are rewarded with gold! You have escaped the rising water!");
+                        return;
+                    } else{
+                        attempts--;
+                        printf("Wrong code! The water is filling up. You have %d attempt(s) left.\n", attempts);
+                    }
+                }
+                puts("\nYou failed to guess the code. The chest remains locked, and the water rises. You drowned!");
+                return;
+            }
+            case 2:
+                puts("You search the room, but all you find are old dusty books and cobwebs. Nothing useful.");
+                break;
+            case 3:
+                puts("The spirit guarding the room says: 'I can tell you a secret, but you must prove your worth by guessing both codes correctly.'");
+                break;
+            case 4:
+                puts("You try the door, but it's locked. There's no way to open it without solving the puzzle.");
+                break;
+            case 5:
+                puts("You attempt to force open the chest with a knife, but it doesn't work. The chest remains locked.");
+                break;
+            default:
+                puts("Invalid choice. Try again.");
+        }
+    }
+}
 
 
 int RM12DiceRoll()
