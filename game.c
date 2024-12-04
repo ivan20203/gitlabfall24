@@ -796,7 +796,7 @@ void room23Logic(){
 		printf("Choice count %d\n",choice);
 		puts("You do something...unexpected. Your moves and actions were so crazy that somehow you ended up in the vaccume of space. Despite being cool, you drift into the void of space until you loose consiousness. You wake up back where you started\n\n");
 	}
-
+}
 
 // Anushka's function
 
