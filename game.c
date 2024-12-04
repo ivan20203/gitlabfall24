@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
 				puts("room8");
 				break;
 			}
-//Corvalis's Room - 9
+//
 			case 9:
 			{
 				puts("room9");
@@ -172,6 +172,7 @@ int main(int argc, char *argv[])
 				puts("room22");
 				break;
 			}
+//Corvalis Room - 23
 			case 23:
 			{
 				puts("room23");
