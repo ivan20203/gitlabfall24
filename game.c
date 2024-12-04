@@ -15,6 +15,9 @@
 
 //place function prototypes here
 
+
+int rps_game(char handGuess, char cpuGuess);
+
 void room3(void);
 
 
@@ -39,11 +42,137 @@ int main(int argc, char *argv[])
 		{
 			case 1:
 			{
-				puts("room1");
-//nathan 
+//nathan
 
-				break;
+				int wins = 0;
+				int choice1 = 0;
+
+				int random = 1 + rand() % 21; //random number for 1-20 game
+				int guess = 0; //number guessing game guesses
+				int tries = 3;
+				int i = 0;
+
+				char scrambled_word[] ="extraordinary"; //word game
+				char wordGuess[20];
+
+				int result;
+				int random_rps = rand() % 3; //random letter for rps game
+				char choices [] = {'r', 'p', 's'}; //rock paper scissors
+				char handGuess;
+				char cpuGuess;
+
+				printf("\nThe door slams behind you and you realize you probably should've chosen another room.\n");
+				printf("Fortunately, it looks like the mechanical door will allow you to leave if you can beat it in at least 3 games of its choosing.\n\n");
+				//gather a total of 3 wins
+
+				while(wins < 3)
+				{
+
+					printf("Enter a number (1-3) to select a game.\n\n");
+
+					printf("1. Word unscramble\n");
+					printf("2. Number guess\n");
+					printf("3. Rock, paper, scissors\n\n");
+
+					scanf("%d", &choice1);
+
+					switch(choice1)
+					{
+						case 1:
+							{ 
+								printf("\nUnscramble the word to win!\n\nScrambled word: soeintrxycau\n");
+								printf("Your guess: ");
+
+							        scanf("%s", wordGuess);
+
+								if(strcmp(wordGuess, scrambled_word)== 0)
+								{
+									wins = wins + 1;
+									printf("\nYou win! Nicely done.\n");
+									printf("Total wins: %d\n\n", wins);
+								}
+								else 
+								{
+									printf("\nBzzzt. Incorrect! Better luck next time!\n\n");
+								}
+
+								break;
+
+							}
+							
+						case 2:
+							{
+								
+						        printf("\nGuess the correct number between 1-20 to win. You have 3 tries.\n");
+							tries = 3; //reset tries counter
+
+							for(i = 0; i < 3; i++)
+							{
+
+								printf("Your guess: ");
+								scanf("%d", &guess);
+
+								tries--;
+
+								if(guess < random)
+								{
+									printf("\nYour guess is lower than correct value. Tries remaining: %d\n", tries);
+
+								} else if (guess > random)
+								{
+									printf("\nYour guess is higher than the correct value. Tries remaining: %d\n", tries);
+
+								} else if (guess == random)
+								{
+									wins = wins + 1;
+									printf("\nYou got it! Nicely done.\n");
+									printf("Total wins: %d\n\n", wins);
+									break;
+								}
+
+								if(tries == 0 && (guess != random))
+								{
+									printf("You lose! Better luck next time.\n\n");
+								}
+
+
+							}
+
+								break;
+							}
+						case 3:
+							{
+								printf("\nRock, paper, scissors!\nEnter 'r' for rock, 'p' for paper, or 's' for scissors: ");
+								scanf(" %c", &handGuess);
+
+								cpuGuess = choices[random_rps];
+
+								result = rps_game(handGuess, cpuGuess);
+								
+								if (result == 1)
+								{
+								wins = wins + 1;
+								printf("Total wins: %d\n\n", wins);
+								}								
+
+								break;
+							}
+
+						default: printf("Invalid Entry!\n");
+
+				}
+
+					if(wins == 3)
+					{
+						printf("The tumblers in the door release as you obtain your third win.\nYou've escaped!\n\n");
+					}
+
+
 			}
+	
+				break;
+			
+			}	
 			case 2:
 			{
 				puts("room2");
@@ -354,6 +483,32 @@ int main(int argc, char *argv[])
 
 //place functions here
 
+
+int rps_game(char handGuess, char cpuGuess)
+{
+
+  if (handGuess == cpuGuess)
+  {
+	  printf("Computer chose: %c\n\n", cpuGuess);
+	  printf("Its a tie!\n\n");
+	  return 0;
+
+  } else if ((handGuess == 'r' && cpuGuess == 's') || (handGuess == 'p' && cpuGuess == 'r') || (handGuess == 's' && cpuGuess == 'p')) 
+  {
+	  printf("Computer chose: %c\n\n", cpuGuess);
+	  printf("You win! Nicely done.\n\n");
+	  return 1;
+
+  } else 
+  { 
+	  printf("Computer chose: %c\n\n", cpuGuess);
+	  printf("You lose! Better luck next time.\n\n");
+	  return -1;
+  }
+
+}
+
+
 //===============================================================================================
 //Nestor's Function
 void room3(void)
@@ -486,5 +641,6 @@ void room3(void)
             printf("Invalid choice. Please choose between 1 and 5.\n");
     }
 }
+
 
 //===============================================================================================
