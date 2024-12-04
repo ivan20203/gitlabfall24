@@ -176,7 +176,41 @@ int main(int argc, char *argv[])
 //Corvalis Room - 23
 			case 23:
 			{
-				puts("room23");
+				//5 unique choices
+				//one loop, one array, a random number
+				//Unique function after main, have the prorotype
+				//The end should result in the user being returned to the loop
+				puts("===== Room23: Corvalis' Room =====");
+				printf("\n\nYour transported to what seems to be a space craft floating adrift the cosmos. What do you do?\n");
+
+				puts("1. Turn back");
+				puts("2. Walk up to space ship controls");
+				puts("3. Do a dance");
+				scanf("%d",&choice);
+
+				switch(choice){
+
+
+					case 1:
+					{
+						puts("You do a swift about face and leave the spaceship");
+					}
+					break;					
+
+
+					case 2:
+					{
+						puts("Something interesting happens!");
+					}
+					break;
+
+
+					case 3:
+					{
+						puts("You do the boogey woogie. Satisified with your dance amongst the stars. You take your leave");
+					}
+					break;
+				}
 				break;
 			}
 			case 24:
