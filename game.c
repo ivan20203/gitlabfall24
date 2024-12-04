@@ -18,6 +18,8 @@
 
 void room11Challenge(void);
 
+void room23Logic();
+
 int RM12DiceRoll();
 
 
@@ -460,10 +462,7 @@ int main(int argc, char *argv[])
 //Corvalis Room - 23
 			case 23:
 			{
-				//5 unique choices
-				//one loop, one array, a random number
-				//Unique function after main, have the prorotype
-				//The end should result in the user being returned to the loop
+				
 				puts("===== Room23: Corvalis' Room =====");
 				printf("\n\nYour transported to what seems to be a space craft floating adrift the cosmos. What do you do?\n");
 
@@ -477,21 +476,23 @@ int main(int argc, char *argv[])
 
 					case 1:
 					{
-						puts("You do a swift about face and leave the spaceship");
+						puts("\n[You do a swift about face and leave the spaceship]\n");
 					}
 					break;					
 
 
 					case 2:
 					{
-						puts("Something interesting happens!");
+						puts("\n[Something interesting happens!]\n");
+						room23Logic();
+						
 					}
 					break;
 
 
 					case 3:
 					{
-						puts("You do the boogey woogie. Satisified with your dance amongst the stars. You take your leave");
+						puts("\n[You do the boogey woogie. Satisified with your dance amongst the stars. You take your leave]\n");
 					}
 					break;
 				}
@@ -669,6 +670,132 @@ int main(int argc, char *argv[])
 }
 
 //place functions here
+
+//Room 23 Function
+void room23Logic(){
+	//make 4 indiidual choices
+	//use one loop, one array, a nradom number
+	//retyrn back to the og loop
+	int choice;
+
+	puts("You see a complex array of controls before you. Several glowing buttons and shining levers. And a simple keyboard connected to a screen displaying a program called SpaceSearch.com");
+	puts("What will you do now?");
+
+	puts("1. Press a button");
+	puts("2. Pull a lever");
+	puts("3. Use the search box");
+
+
+
+	scanf("%d", &choice);
+
+
+	if(choice == 1){
+
+		int buttonChoice;
+		int countdown = rand() % 10 + 1;
+		int maxButtons = 10;
+		int randButton = rand() % maxButtons + 1;
+
+		puts("The lights begin glowing red, blaring alarms as an annocument comes over the speakers.");
+		puts("S E L F  D E S T R U C T  I N I T I A T E D");
+		printf("DESTRUCTION IN : %d\n", countdown);
+		printf("\nYou panic, realizing you need to fight the right button to deactive the explosion. There are %d random buttons that light up as possible options\n", maxButtons);
+
+		do{
+
+			printf("\nChoose a button between 1 and %d\n",maxButtons);
+			scanf("%d", &buttonChoice);
+
+			if(buttonChoice == randButton){
+				puts("The alarms stop blaring, and you now know you are safe. With a sigh of releif, you take your leave of this flying metal death trap.\n\n");
+
+			}
+
+			else{
+				puts("That button was not correct");
+				countdown--;
+				printf("DESTRUCTION IN : %d\n", countdown);
+			}
+
+		}
+		while(buttonChoice != randButton && countdown > 0);
+
+		if(countdown <= 0){
+			puts("The ship shutters violently, as your vision is consumbed by a bright light. Then everything goes dark with as you hear a lightbulb burn out.\n\n");
+		}
+
+	}
+
+	if(choice == 2){
+
+		int choice2;
+
+		puts("You warp forward twaord a nearby star, with no destiation selected. You'll burn up on impact if you don't take control!");
+		puts("1. Steer away");
+		puts("2. Let it go");
+		puts("3. Do a 360");
+
+		scanf("%d", &choice2);
+
+
+		if(choice2 == 1){
+			puts("You narroly avoid the star, stearing clear of the blazing inferno");
+		}
+		else if(choice2 == 2){
+			puts("You smash right into the star, supercharging your ships engines, causing them to go even faster!");
+		}
+		else if (choice2 == 3){
+			puts("You pull a sick 360, spining at such speeds that you glide around the side. Making you slightly dizzy");
+		}
+		else {
+			puts("You perform an unexpected manuver! Causing you to smash through the star, causing it to go supernova!");
+		}
+	
+		puts("Unfortuatly you couldn't control the ships speed, and kept moving faster. Eventually the world melts away as you transend our dimension.\n\n");
+
+	}
+
+	if(choice ==3){
+		int vacationID;
+		int locCount = 5;
+		char locations[5][20] = {
+
+		"Thahiti",
+		"Earth",
+		"Glip Glorb 5",
+		"Lava planet"
+		"No where"
+		};
+		puts("You open the browser as it prompts you to type in a destiation as a number. The page is labeled with the following");
+		puts("TYPE IN AN ID TO YOUR NEW SPACE VACATION DESTINATION!");
+		puts("Enter a number between 1-5");
+		scanf("%d",&vacationID);
+
+		char *vacation;
+		printf("%d vs %d", vacationID, locCount);
+		if(vacationID >= locCount){
+			puts("Out of bounds");
+			vacation = "A random place";
+			//printf("\nYou selected your vacation spot to %s! Enjoy your stay!\n\n",vacation);
+		}
+
+		else{
+			vacation = locations[vacationID-1];
+		}
+		
+		printf("\nYou selected your vacation spot to %s! Enjoy your stay!\n\n",vacation);
+		puts("The ship warps away to your new destination, and you spend a few years there in relaitive comfort. One day when louging around you close your eyes going into a deep sleep...\n\n");
+	}
+
+
+	if(choice < 1 || choice > 3){
+		printf("Choice count %d\n",choice);
+		puts("You do something...unexpected. Your moves and actions were so crazy that somehow you ended up in the vaccume of space. Despite being cool, you drift into the void of space until you loose consiousness. You wake up back where you started\n\n");
+	}
+
+}
+
 
 //room 11 function
 
