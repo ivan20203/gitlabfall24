@@ -1054,12 +1054,12 @@ void room18(void) {
     printf("\n");
 
     printf("Would you like to play again in Room 18? (Yes/No): ");
-    scanf(" %c", &playAgain);
+    scanf("%s", playAgain); 
 
-    if (playAgain == 'Yes' || playAgain == 'No') {
+	if (strcmp(playAgain, "Yes") == 0 || strcmp(playAgain, "yes") == 0) {
         room18();
     } else {
-        printf("Return\n");
+        printf("Returning to the main menu...\n");
     }
 }
 
