@@ -27,7 +27,7 @@ int rps_game(char handGuess, char cpuGuess);
 void room3(void);
 void mysteryItemGame(void);
 
-
+void Room26FindTheKey(void);
 
 int main(int argc, char *argv[])
 {
@@ -477,6 +477,8 @@ int main(int argc, char *argv[])
 			}
 			case 26:
 			{
+				// Camila Ramirez
+				Room26FindTheKey();
 				puts("room26");
 				break;
 			}
@@ -1007,4 +1009,57 @@ void room3(void)
 
 
 //===============================================================================================
+void Room26FindTheKey()
+{
+        int tries = 5;
+        int randomKeys = rand() % 10 + 1;
+        int guess;
+        int keys[10];
+        bool foundKey = false;
 
+        // make random locations
+        for (int i = 0; i < 10; i++)
+        {
+                keys[i] = 0;
+        }
+        keys[randomKeys - 1] = 1;
+
+        printf("You entered room 27. To enter the next door find the hidden key in one of the boxes.\n");
+
+        printf("You have 5 tries to find the key. Choose a number between 1 and 10.\n");
+        // while the user is guessing
+        while (guess > 0 && !foundKey)
+        {
+                printf("\nEnter your choice of box: ");
+                scanf("%d", &guess);
+
+                if (guess < 1 || guess > 10)
+                {
+                        printf("You must choose a number between 1 and 10. Try again.\n");
+                        continue;
+                }
+
+                if (keys[guess - 1] == 1)
+                {
+                        printf("You got the right box at %d! Congrats!\n", guess);
+                        foundKey = true;
+                }
+
+                else
+                {
+                        printf("There was no key in the box %d. Try Agin\n", guess);
+                }
+
+                tries--;
+
+                if (!foundKey && tries > 0)
+                {
+                        printf("You have %d tries remaining.\n", tries);
+                }
+        }
+
+        if (!foundKey)
+        {
+                printf("You ran out of tries. The key was in box %d.\n", randomKeys);
+        }
+}
