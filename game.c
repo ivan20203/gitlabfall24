@@ -209,8 +209,12 @@ int main(int argc, char *argv[])
 			}
 			case 30:
 			{
-				puts("room30");
-//ivan
+				puts("you enter room30 \n");
+                                puts("And you find yourself on an AWS datacenter!  \n");
+				
+				
+				//ivan
+				
 				break;
 			}
 			case 31:
