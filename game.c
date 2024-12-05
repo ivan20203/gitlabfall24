@@ -26,6 +26,7 @@ int rps_game(char handGuess, char cpuGuess);
 
 void room3(void);
 void mysteryItemGame(void);
+void room13sid(void);
 
 
 
@@ -406,7 +407,7 @@ int main(int argc, char *argv[])
 			}
 			case 13:
 			{
-				puts("room13");
+				room13sid(); //calls to room 13
 //sidney
 				break;
 			}
@@ -1008,3 +1009,51 @@ void room3(void)
 
 //===============================================================================================
 
+// sidney's function ----------------------------------------------------------------------------
+void room13sid(void)
+{
+	int actionsid, rngsid;
+	char proceedsid = 'y';
+	printf("You open Door 13... you step into a chilling room filled with whispers and an eerie feeling..\n");
+	while (proceedsid == 'y' || proceedsid == 'Y')
+	{
+		puts("\nWhat would you like to do?");
+		puts("1. Investigate the whispers and where they're coming from.");
+		puts("2. Open the glowy green box on the table.");
+		puts("3. Look behind the curtains drenched in blood.");
+		puts("4. Examine the words written in blood on the walls that spell out HELP.");
+		puts("5. Leave the room.");
+		scanf("%d", &actionsid);
+
+		switch (actionsid)
+		{
+			case 1:
+				printf("As you approach the whispers, you see something walking in the distance.. a shadowy figure perhaps? It leaves an icy chill down ur back.\n");
+				break;
+			case 2:
+				rngsid = rand() %2;
+				if (rngsid == 0)
+					printf("The box contains a candle that flickers. It seems harmless?\n");
+				else
+					printf("The box bursts open and a ghostly figure pops out screaming!\n");
+				break;
+			case 3:
+				printf("Behind the curtains you find a mirror but you can't see your reflection. It breaks.\n");
+				break;
+			case 4:
+				printf("You quickly run out of Door 13, heart pounding and sanity at 1%%.\n");
+				proceedsid = 'n';
+				break;
+			default:
+				printf("The room grows colder as you hesitate. Make a valid choice!\n");
+		}
+
+		if (proceedsid != 'n')
+		{
+			printf("Do you want to continue exploring Door 13? (y/n): ");
+			scanf(" %c", &proceedsid);
+		}
+	}
+}
+
+//------------------------------------------------------------------------------------------------
