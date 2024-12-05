@@ -26,7 +26,7 @@ int rps_game(char handGuess, char cpuGuess);
 
 void room3(void);
 void mysteryItemGame(void);
-
+void room18(void);
 
 
 int main(int argc, char *argv[])
@@ -437,6 +437,7 @@ int main(int argc, char *argv[])
 			{
 				puts("room18");
 				// Kingslee Velu
+				room18();
 				break;
 			}
 			case 19:
@@ -1006,6 +1007,61 @@ void room3(void)
     }
 }
 
+//===============================================================================================
+//Room 18 Function
+//===============================================================================================
+void room18(void) {
+    int choices[5] = {0};
+    int randomNum;
+    int guess, attempts = 0;
+    char playAgain;
+
+    printf("Welcome to Room 18!\n");
+    printf("Here, you will play random number guessing game.\n");
+    printf("You have 5 attempts to guess correct number b/w 1 and 20.\n");
+
+    // Generate random num
+    srand(time(NULL));
+    randomNum = (rand() % 20) + 1;
+
+    do {
+        printf("Enter your guess (1-20): ");
+        scanf("%d", &guess);
+        attempts++;
+
+        if (guess == randomNum) {
+            printf("Congrat! You guessed the correct number: %d\n", randomNum);
+            break;
+        } else if (guess < randomNum) {
+            printf("Too low. Try again.\n");
+        } else {
+            printf("Too high. Try again.\n");
+        }
+
+        // Store the guess count
+        choices[attempts - 1] = guess;
+
+        if (attempts == 5) {
+            printf("You used all the attemps. The correct number was %d.\n", randomNum);
+            break;
+        }
+    } while (1);
+
+    printf("\nYour guesses are: ");
+    for (int i = 0; i < attempts; i++) {
+        printf("%d ", choices[i]);
+    }
+    printf("\n");
+
+    printf("Would you like to play again in Room 18? (Yes/No): ");
+    scanf(" %c", &playAgain);
+
+    if (playAgain == 'Yes' || playAgain == 'No') {
+        room18();
+    } else {
+        printf("Return\n");
+    }
+}
 
 //===============================================================================================
 
