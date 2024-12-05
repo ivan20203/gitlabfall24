@@ -1053,14 +1053,15 @@ void room18(void) {
     }
     printf("\n");
 
-    printf("Would you like to play again in Room 18? (Yes/No): ");
-    scanf("%s", playAgain); 
+	printf("Would you like to play again in Room 18? (y/n): ");
+    scanf(" %c", &playAgain);
 
-	if (strcmp(playAgain, "Yes") == 0 || strcmp(playAgain, "yes") == 0) {
+    if (playAgain == 'y' || playAgain == 'Y') {
         room18();
     } else {
         printf("Returning to the main menu...\n");
     }
+
 }
 
 //===============================================================================================
